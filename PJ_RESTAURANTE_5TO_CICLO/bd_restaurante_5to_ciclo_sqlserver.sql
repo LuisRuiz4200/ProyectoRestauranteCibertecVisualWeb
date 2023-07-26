@@ -50,7 +50,7 @@ create table tb_usuario(
     dni_usuario char(8) not null,
     email_usuario varchar(100) not null,
     password_usuario char(8) not null,
-    imagen_usuario varbinary(max) ,
+    imagen_usuario varchar(800) , /*REVISAR VARBINARY(MAX)*/
     fechaReg_usuario DateTime not null,
     fechaAct_usuario DateTime ,
     estado_usuario varchar(100) not null,
