@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using PJ_RESTAURANTE_5TO_CICLO.Interface;
 using PJ_RESTAURANTE_5TO_CICLO.Models;
 using PJ_RESTAURANTE_5TO_CICLO.Repository;
@@ -15,20 +16,29 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> registrarUsuario(Usuario obj)
+        public async Task<IActionResult> registrarUsuario(Usuario obj,IFormFile imagen)
         {
             string mensaje = "";
 
             if (ModelState.IsValid)
             {
-                obj.imagen_usuario=null;
+                byte[] data = null; 
+
+                if (imagen != null)
+                {
+
+                    data = new byte[imagen.Length];
+                }
+
+                // mensaje = imagen.ToString();
+                obj.imagen_usuario= data;
                 mensaje = iUsuario.agregar(obj);
             }
 
-            ViewBag.mensaje = mensaje;
+            TempData["mensaje"] = mensaje;
 
 
-            return View();
+            return View("registrarUsuario");
         }
     }
 }
