@@ -55,7 +55,15 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Controllers
                         }
                     }
 
-                    mensaje = await Task.Run(()=>iUsuario.agregar(obj));
+                    if (iUsuario.buscar(obj.id_usuario) != null)
+                    {
+                        mensaje = await Task.Run(() => iUsuario.editar(obj));
+                    }
+                    else 
+                    {
+                        mensaje = await Task.Run(() => iUsuario.agregar(obj));
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -69,6 +77,17 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Controllers
             return RedirectToAction("registrarUsuario");
         }
 
+
+        public async Task<IActionResult> editarUsuario(int id)
+        {
+            Usuario obj  =  await Task.Run(()=> iUsuario.buscar(id));
+
+
+            ViewBag.listaTipoUsuario = await Task.Run(() => new SelectList(iTipoUsuario.listar(), "id_tipo_usuario", "des_tipo_usuario",obj.id_tipo_usuario));
+            ViewBag.listaDistrito = await Task.Run(() => new SelectList(iDistrito.listar(), "id_distrito", "des_distrito",obj.id_distrito));
+
+            return View("registrarUsuario",obj);
+        }
 
     }
 }

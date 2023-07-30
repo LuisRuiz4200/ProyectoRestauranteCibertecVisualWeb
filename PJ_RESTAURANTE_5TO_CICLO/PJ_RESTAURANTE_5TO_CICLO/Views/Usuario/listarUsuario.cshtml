@@ -119,7 +119,7 @@
                         @Html.DisplayFor(modelItem => item.estado_usuario)
                     </td>
                     <td>
-                        @Html.ActionLink("Editar", "registrarUsuario", new { id=item.id_usuario  }, new{@class="btn btn-warning btn-sm"}) |
+                        @Html.ActionLink("Editar", "editarUsuario", new { id=item.id_usuario  }, new{@class="btn btn-warning btn-sm"}) |
                         @Html.ActionLink("Eliminar", "eliminarUsuario", new { id=item.id_usuario  }, new{@class="btn btn-danger btn-sm"})
                     </td>
                 </tr>
