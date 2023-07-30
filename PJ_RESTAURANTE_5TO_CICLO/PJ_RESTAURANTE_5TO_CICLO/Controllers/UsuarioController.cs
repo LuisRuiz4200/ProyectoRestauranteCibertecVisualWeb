@@ -22,9 +22,16 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Controllers
 
         public async Task<IActionResult> registrarUsuario()
         {
+            Usuario obj = new Usuario();
+            obj.id_usuario = 1;
+            obj.fechareg_usuario = DateTime.Now;
+            obj.fechaact_usuario = DateTime.Now;
+            obj.estado_usuario = "REGISTRADO";
+
             ViewBag.listaTipoUsuario = await Task.Run(()=>new SelectList(iTipoUsuario.listar(),"id_tipo_usuario","des_tipo_usuario"));
             ViewBag.listaDistrito = await Task.Run(() => new SelectList(iDistrito.listar(), "id_distrito", "des_distrito"));
-            return View();
+
+            return View(obj);
         }
 
         [HttpPost]
