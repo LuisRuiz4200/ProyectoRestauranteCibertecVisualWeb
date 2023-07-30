@@ -55,7 +55,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Controllers
                         }
                     }
 
-                    mensaje = iUsuario.agregar(obj);
+                    mensaje = await Task.Run(()=>iUsuario.agregar(obj));
                 }
             }
             catch (Exception ex)
