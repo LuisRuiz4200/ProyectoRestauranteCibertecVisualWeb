@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="id_tipo_usuario" class="control-label"></label>
-                    <input asp-for="id_tipo_usuario" class="form-control" />
+                    <select asp-for="id_tipo_usuario" asp-items=ViewBag.listaTipoUsuario class="form-select"></select>
                     <span asp-validation-for="id_tipo_usuario" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -55,13 +55,13 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="id_distrito" class="control-label"></label>
-                    <input asp-for="id_distrito" class="form-control" />
+                    <select asp-for="id_distrito" asp-items=ViewBag.listaDistrito class="form-select" ></select>
                     <span asp-validation-for="id_distrito" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="dir_distrito" class="control-label"></label>
-                    <input asp-for="dir_distrito" class="form-control" />
-                    <span asp-validation-for="dir_distrito" class="text-danger"></span>
+                    <label asp-for="dir_usuario" class="control-label"></label>
+                    <input asp-for="dir_usuario" class="form-control" />
+                    <span asp-validation-for="dir_usuario" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="dni_usuario" class="control-label"></label>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="imagen_usuario" class="control-label"></label>
-                    <input asp-for="imagen_usuario" class="form-control" type="file" />
+                    <input asp-for="imagen_usuario" name="imagen" class="form-control" type="file" />
                     <span asp-validation-for="imagen_usuario" class="text-danger"></span>
                 </div>
                 <div class="form-group">

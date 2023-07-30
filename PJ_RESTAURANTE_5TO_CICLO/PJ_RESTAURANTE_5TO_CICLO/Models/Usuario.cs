@@ -10,7 +10,7 @@
         public string? tel_usuario { get; set; }
         public string? cel_usuario { get; set; }
         public int id_distrito { get;set; }
-        public string? dir_distrito { get; set; }
+        public string? dir_usuario { get; set; }
         public string? dni_usuario { get; set; } 
         public string? email_usuario { get; set; }
         public string? password_usuario { get; set; }

@@ -17,7 +17,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
         {
 
             string cadena_sql = "insert into tb_usuario values (@id_tipo_usuario,@cod_usuario,@nom_usuario,@ape_usuario,@tel_usuario,@cel_usuario,@id_distrito,@dir_usuario," +
-                "@dni_usuario,@email_usuario,@password_usuario,null,@fechareg_usuario,@fechaact_usuario,@estado_usuario)";
+                "@dni_usuario,@email_usuario,@password_usuario,@imagen_usuario,@fechareg_usuario,@fechaact_usuario,@estado_usuario)";
             string mensaje = "";
 
             try 
@@ -33,7 +33,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
                     cmd.Parameters.AddWithValue("@tel_usuario", entity.tel_usuario);
                     cmd.Parameters.AddWithValue("@cel_usuario", entity.cel_usuario);
                     cmd.Parameters.AddWithValue("@id_distrito", entity.id_distrito);
-                    cmd.Parameters.AddWithValue("@dir_usuario", entity.dir_distrito);
+                    cmd.Parameters.AddWithValue("@dir_usuario", entity.dir_usuario);
                     cmd.Parameters.AddWithValue("@dni_usuario",entity.dni_usuario);
                     cmd.Parameters.AddWithValue("@email_usuario", entity.email_usuario);
                     cmd.Parameters.AddWithValue("@password_usuario", entity.password_usuario);
@@ -75,7 +75,39 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
 
         public List<Usuario> listar()
         {
-            throw new NotImplementedException();
+            List<Usuario> lista = new List<Usuario>();
+
+            using (SqlConnection cn = new SqlConnection(cadena_connection))
+            {
+                SqlCommand cmd = new SqlCommand("select * from tb_usuario", cn);
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Usuario obj = new Usuario();
+                    obj.id_usuario = dr.GetInt32(0);
+                    obj.id_tipo_usuario = dr.GetInt32(1);
+                    obj.cod_usuario = dr.GetString(2);
+                    obj.nom_usuario = dr.GetString(3);
+                    obj.ape_usuario = dr.GetString(4);
+                    obj.tel_usuario=dr.GetString(5);
+                    obj.cel_usuario=dr.GetString(6);
+                    obj.id_distrito = dr.GetInt32(7);
+                    obj.dir_usuario = dr.GetString(8);
+                    obj.dni_usuario = dr.GetString(9);
+                    obj.email_usuario = dr.GetString(10);
+                    obj.password_usuario = dr.GetString(11);
+                    obj.imagen_usuario = (byte[]?)dr.GetSqlBinary(12);
+                    obj.fechareg_usuario = dr.GetDateTime(13);
+                    obj.fechaact_usuario = dr.GetDateTime(14);
+                    obj.estado_usuario = dr.GetString(15);
+
+                    lista.Add(obj);
+                }
+
+            }
+
+            return lista;
         }
     }
 }
