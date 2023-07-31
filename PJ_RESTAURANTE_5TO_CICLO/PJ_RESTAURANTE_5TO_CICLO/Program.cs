@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IUsuario,UsuarioRepository>();
 builder.Services.AddSingleton<ITipoUsuario,TipoUsuarioRepository>();
 builder.Services.AddSingleton<IPedido, PedidoRepository>(); 
+builder.Services.AddSingleton<IColaborador,ColaboradorRepository>();
 
 var app = builder.Build();
 
