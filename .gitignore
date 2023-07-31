@@ -2,4 +2,3 @@ bin/
 obj/
 .vs/
 appsettings.json
-*.json
