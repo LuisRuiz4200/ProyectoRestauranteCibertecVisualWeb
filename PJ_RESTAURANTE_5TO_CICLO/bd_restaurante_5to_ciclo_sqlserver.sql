@@ -96,6 +96,7 @@ create table tb_tarjeta(
 	numero_tarjeta varchar(16) not null,
 	cvv_tarjeta varchar(3) not null,
 	fecha_tarjeta datetime not null,
+	nombre_tarjeta varchar(100) not null,
 	fechareg_direntrega datetime not null,
 	estado_direntrega varchar(100) not null,
 	
