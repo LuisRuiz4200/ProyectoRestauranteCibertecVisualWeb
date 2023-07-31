@@ -6,6 +6,6 @@
         T buscar (int id);
         string agregar (T entity);
         string editar (T entity);
-        string eliminar (T entity);
+        string eliminar (int id);
     }
 }

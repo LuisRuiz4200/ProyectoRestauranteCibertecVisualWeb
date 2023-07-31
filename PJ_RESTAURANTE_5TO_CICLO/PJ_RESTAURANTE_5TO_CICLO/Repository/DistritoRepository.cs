@@ -25,7 +25,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
             throw new NotImplementedException();
         }
 
-        public string eliminar(Distrito entity)
+        public string eliminar(int id)
         {
             throw new NotImplementedException();
         }
