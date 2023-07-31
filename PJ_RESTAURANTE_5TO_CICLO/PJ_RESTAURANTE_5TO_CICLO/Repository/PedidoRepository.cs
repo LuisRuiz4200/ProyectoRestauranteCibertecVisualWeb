@@ -8,7 +8,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
         public string agregar(Pedido entity)
         {
             throw new NotImplementedException();
-        }
+        } 
 
         public Pedido buscar(int id)
         {

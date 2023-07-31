@@ -6,15 +6,11 @@ using PJ_RESTAURANTE_5TO_CICLO.Repository;
 namespace PJ_RESTAURANTE_5TO_CICLO.Controllers
 {
 
-    private 
-
     public class ColaboradorController : Controller
     {
 
         private IColaborador iColaborador = new ColaboradorRepository();
 
-
-        
 
         public async Task<IActionResult> registrarColaborador(Colaborador obj, IFormFile imagen)
         {
