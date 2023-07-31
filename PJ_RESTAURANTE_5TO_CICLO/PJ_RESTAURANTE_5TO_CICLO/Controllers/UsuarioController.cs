@@ -47,8 +47,8 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Controllers
                     if (imagen.Length != 0)
                     {
                         using (Stream st = imagen.OpenReadStream())
-                        { 
-                            using (BinaryReader br = new BinaryReader(st)) 
+                        {
+                            using (BinaryReader br = new BinaryReader(st))
                             {
                                 obj.imagen_usuario = br.ReadBytes((int)st.Length);
                             }
@@ -87,6 +87,14 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Controllers
             ViewBag.listaDistrito = await Task.Run(() => new SelectList(iDistrito.listar(), "id_distrito", "des_distrito",obj.id_distrito));
 
             return View("registrarUsuario",obj);
+        }
+
+        public async Task<IActionResult> eliminarUsuario(int id)
+        {
+
+            TempData["mensaje"]= await Task.Run(() => iUsuario.eliminar(id));
+
+            return RedirectToAction("listarUsuario");
         }
 
     }

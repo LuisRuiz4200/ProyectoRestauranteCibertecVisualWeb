@@ -99,9 +99,9 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
 
         public string editar(Usuario entity)
         {
-            string cadena_sql = "update tb_usuario set nom_usuario = @nom_usuario, ape_usuario=@ape_usuario, tel_usuario=@tel_usuario, " +
+            string cadena_sql = "update tb_usuario set nom_usuario=@nom_usuario, ape_usuario=@ape_usuario, tel_usuario=@tel_usuario, " +
                 "cel_usuario=@cel_usuario, id_distrito=@id_distrito, dir_usuario= @dir_usuario, dni_usuario=@dni_usuario, email_usuario=@email_usuario, " +
-                "password_usuario=@password_usuario, imagen_usuario=@imagen_usuario, fechareg_usuario0@fechreg_usuario, fechaact_usuario=@fechaact_usuario, " +
+                "password_usuario=@password_usuario, imagen_usuario=@imagen_usuario, fechareg_usuario=@fechareg_usuario, fechaact_usuario=@fechaact_usuario, " +
                 "estado_usuario=@estado_usuario where id_usuario=@id_usuario";
             string mensaje = "";
 
@@ -130,7 +130,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
 
                     int nroRegistros = cmd.ExecuteNonQuery();
 
-                    mensaje = $"Se actulizó {nroRegistros} registros";
+                    mensaje = $"Se actualizó {nroRegistros} registros";
                 }
             }
             catch (Exception ex)
@@ -154,11 +154,13 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
                     SqlCommand cmd = new SqlCommand(cadena_sql, con);
                     cmd.CommandType = CommandType.Text;
 
+                    cmd.Parameters.AddWithValue ("@id_usuario", id);
+
                     con.Open();
 
                     int nroRegistros = cmd.ExecuteNonQuery();
 
-                    mensaje = $"Se insertó {nroRegistros} registros";
+                    mensaje = $"Se anuló {nroRegistros} registros";
                 }
             }
             catch (Exception ex)

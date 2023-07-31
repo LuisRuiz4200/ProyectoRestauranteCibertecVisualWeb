@@ -10,6 +10,10 @@
     <a asp-action="registrarUsuario" asp-controller="Usuario" class="btn btn-primary btn-sm">Nuevo Usuario</a>
 </p>
 
+<div class="text-danger">
+    @TempData["mensaje"]
+</div>
+
 <div class="table-responsive">
 
     <table class="table ">
