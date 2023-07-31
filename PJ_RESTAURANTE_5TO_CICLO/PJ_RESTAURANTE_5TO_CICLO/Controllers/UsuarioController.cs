@@ -71,7 +71,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Controllers
                 mensaje = ex.Message;
             }
 
-            TempData["mensaje"] = mensaje  + "LUIS";
+            TempData["mensaje"] = mensaje ;
 
 
             return RedirectToAction("registrarUsuario");
