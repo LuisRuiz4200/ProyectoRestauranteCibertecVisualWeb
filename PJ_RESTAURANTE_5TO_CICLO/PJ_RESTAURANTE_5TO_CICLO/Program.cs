@@ -9,6 +9,7 @@ builder.Services.AddSingleton<IUsuario,UsuarioRepository>();
 builder.Services.AddSingleton<ITipoUsuario,TipoUsuarioRepository>();
 builder.Services.AddSingleton<IPedido, PedidoRepository>(); 
 builder.Services.AddSingleton<IColaborador,ColaboradorRepository>();
+builder.Services.AddSingleton<ITipoColaborador,TipoColaboradorRepository>();
 
 var app = builder.Build();
 

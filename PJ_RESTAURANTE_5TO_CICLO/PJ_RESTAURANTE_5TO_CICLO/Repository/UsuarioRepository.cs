@@ -2,16 +2,12 @@
 using PJ_RESTAURANTE_5TO_CICLO.Models;
 using System.Data.SqlClient;
 using System.Data;
+using PJ_RESTAURANTE_5TO_CICLO.Conexion;
 
 namespace PJ_RESTAURANTE_5TO_CICLO.Repository
 {
-    public class UsuarioRepository : IUsuario
+    public class UsuarioRepository :SqlServer, IUsuario
     {
-
-        string? cadena_connection = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json")
-            .Build()
-            .GetConnectionString("connection1");
 
         public string agregar(Usuario entity)
         {
@@ -22,7 +18,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
 
             try 
             {
-                using (SqlConnection con = new SqlConnection(cadena_connection))
+                using (SqlConnection con = new SqlConnection(bd_restaurante_5to_ciclo()))
                 {
                     SqlCommand cmd = new SqlCommand(cadena_sql,con);
                     cmd.CommandType = CommandType.Text;
@@ -60,9 +56,9 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
 
         public Usuario buscar(int id)
         {
-            Usuario obj = new Usuario();
+            Usuario? obj=null;
 
-            using (SqlConnection cn = new SqlConnection(cadena_connection))
+            using (SqlConnection cn = new SqlConnection(bd_restaurante_5to_ciclo()))
             {
                 SqlCommand cmd = new SqlCommand("select * from tb_usuario where id_usuario = @id_usuario", cn);
                 cmd.CommandType = CommandType.Text;
@@ -71,6 +67,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
+                    obj = new Usuario();
 
                     obj.id_usuario = dr.GetInt32(0);
                     obj.id_tipo_usuario = dr.GetInt32(1);
@@ -107,7 +104,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
 
             try
             {
-                using (SqlConnection con = new SqlConnection(cadena_connection))
+                using (SqlConnection con = new SqlConnection(bd_restaurante_5to_ciclo()))
                 {
                     SqlCommand cmd = new SqlCommand(cadena_sql, con);
                     cmd.CommandType = CommandType.Text;
@@ -149,7 +146,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
 
             try
             {
-                using (SqlConnection con = new SqlConnection(cadena_connection))
+                using (SqlConnection con = new SqlConnection(bd_restaurante_5to_ciclo()))
                 {
                     SqlCommand cmd = new SqlCommand(cadena_sql, con);
                     cmd.CommandType = CommandType.Text;
@@ -176,7 +173,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Repository
         {
             List<Usuario> lista = new List<Usuario>();
 
-            using (SqlConnection cn = new SqlConnection(cadena_connection))
+            using (SqlConnection cn = new SqlConnection(bd_restaurante_5to_ciclo()))
             {
                 SqlCommand cmd = new SqlCommand("select * from tb_usuario", cn);
                 cn.Open();

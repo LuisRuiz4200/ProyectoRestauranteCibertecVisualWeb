@@ -10,5 +10,6 @@
         public byte[]? imagen_colaborador { get; set; }
         public DateTime fechareg_colaborador { get; set; }
         public DateTime fechaact_colaborador { get; set; }
+        public string? estado_colaborador { get; set; }
     }
 }

@@ -80,7 +80,7 @@ namespace PJ_RESTAURANTE_5TO_CICLO.Controllers
 
         public async Task<IActionResult> editarUsuario(int id)
         {
-            Usuario obj  =  await Task.Run(()=> iUsuario.buscar(id));
+            Usuario? obj  =  await Task.Run(()=> iUsuario.buscar(id));
 
 
             ViewBag.listaTipoUsuario = await Task.Run(() => new SelectList(iTipoUsuario.listar(), "id_tipo_usuario", "des_tipo_usuario",obj.id_tipo_usuario));

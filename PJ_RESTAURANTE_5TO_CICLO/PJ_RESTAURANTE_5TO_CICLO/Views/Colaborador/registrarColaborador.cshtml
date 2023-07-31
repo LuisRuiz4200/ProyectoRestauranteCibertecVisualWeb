@@ -1,0 +1,88 @@
+﻿@model PJ_RESTAURANTE_5TO_CICLO.Models.Colaborador
+
+@{
+    ViewData["Title"] = "registrarColaborador";
+}
+
+<h1>registrarColaborador</h1>
+
+<h4>Colaborador</h4>
+<hr />
+
+<div class="text-danger">
+    @TempData["mensaje"]
+</div>
+
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="registrarColaborador" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row row-cols-4">
+                <div class="form-group">
+                    <label asp-for="id_colaborador" class="control-label"></label>
+                    <input asp-for="id_colaborador" class="form-control" />
+                    <span asp-validation-for="id_colaborador" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="fechareg_colaborador" class="control-label"></label>
+                    <input asp-for="fechareg_colaborador" class="form-control" />
+                    <span asp-validation-for="fechareg_colaborador" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="fechaact_colaborador" class="control-label"></label>
+                    <input asp-for="fechaact_colaborador" class="form-control" />
+                    <span asp-validation-for="fechaact_colaborador" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="estado_colaborador" class="control-label"></label>
+                    <input asp-for="estado_colaborador" class="form-control" />
+                    <span asp-validation-for="estado_colaborador" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row row-cols-2">
+                
+                <div class="form-group">
+                    <label asp-for="id_tipo_colaborador" class="control-label"></label>
+                    <select asp-for="id_tipo_colaborador" asp-items=ViewBag.listaTipoColaborador class="form-control" ></select>
+                    <span asp-validation-for="id_tipo_colaborador" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="nom_colaborador" class="control-label"></label>
+                    <input asp-for="nom_colaborador" class="form-control" />
+                    <span asp-validation-for="nom_colaborador" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ape_colaborador" class="control-label"></label>
+                    <input asp-for="ape_colaborador" class="form-control" />
+                    <span asp-validation-for="ape_colaborador" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="dni_colaborador" class="control-label"></label>
+                    <input asp-for="dni_colaborador" class="form-control" />
+                    <span asp-validation-for="dni_colaborador" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="imagen_colaborador" class="control-label"></label>
+                    <input asp-for="imagen_colaborador" name="imagen" type="file" class="form-control" />
+                    <span asp-validation-for="imagen_colaborador" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
