@@ -141,6 +141,8 @@ create table  tb_producto_pedido  (
 	id_pedido int not null,
     id_producto_pedido int not null identity(1,1),
     id_producto  int not null,
+	cantidad int not null,
+
     
     primary key(id_producto_pedido, id_pedido),
     foreign key (id_pedido) references tb_pedido (id_pedido),
