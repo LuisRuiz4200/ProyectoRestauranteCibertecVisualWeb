@@ -90,6 +90,21 @@ create table tb_direntrega_usuario(
 )
 go
 
+create table tb_tarjeta(
+	id_usuario int not null ,
+	id_tarjeta int identity(1,1) not null,
+	numero_tarjeta varchar(16) not null,
+	cvv_tarjeta varchar(3) not null,
+	fecha_tarjeta datetime not null,
+	nombre_tarjeta varchar(100) not null,
+	fechareg_direntrega datetime not null,
+	estado_direntrega varchar(100) not null,
+	
+	primary key (id_tarjeta, id_usuario),
+	foreign key (id_usuario) references tb_usuario (id_usuario)
+)
+go
+
 /**/
 create table tb_pedido(
 	id_pedido int identity(1,1) not null primary key,
@@ -126,6 +141,8 @@ create table  tb_producto_pedido  (
 	id_pedido int not null,
     id_producto_pedido int not null identity(1,1),
     id_producto  int not null,
+	cantidad_producto int not null,
+
     
     primary key(id_producto_pedido, id_pedido),
     foreign key (id_pedido) references tb_pedido (id_pedido),
