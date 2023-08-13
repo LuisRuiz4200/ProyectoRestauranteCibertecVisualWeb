@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PJ_RESTAURANTE_5TO_CICLO.Models.Colaborador>
+
+@{
+    ViewData["Title"] = "listarColaborador";
+}
+
+<h1>listarColaborador</h1>
+
+<p>
+    <a asp-action="registrarColaborador" asp-controller="Colaborador" class="btn btn-primary btn-sm">Nuevo colaborador</a>
+</p>
+
+<div class="table-responsive">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.id_colaborador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.id_tipo_colaborador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nom_colaborador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ape_colaborador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.dni_colaborador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.imagen_colaborador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fechareg_colaborador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fechaact_colaborador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.estado_colaborador)
+                </th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_colaborador)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_tipo_colaborador)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nom_colaborador)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ape_colaborador)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dni_colaborador)
+                    </td>
+                    <td>
+                        <img src="data:image/; base64, @Convert.ToBase64String(item.imagen_colaborador)" width="100px" height="100px">
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fechareg_colaborador)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fechaact_colaborador)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.estado_colaborador)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "editarColaborador", new { id=item.id_colaborador }, new{@class="btn btn-warning btn-sm"}) |
+                        @Html.ActionLink("Eliminar", "eliminarColaborador", new { id=item.id_colaborador }, new {@class="btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

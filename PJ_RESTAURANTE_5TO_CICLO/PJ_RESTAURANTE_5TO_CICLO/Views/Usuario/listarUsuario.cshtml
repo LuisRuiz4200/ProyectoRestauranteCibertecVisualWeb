@@ -1,0 +1,133 @@
+﻿@model IEnumerable<PJ_RESTAURANTE_5TO_CICLO.Models.Usuario>
+
+@{
+    ViewData["Title"] = "listarUsuario";
+}
+
+<h1>listarUsuario</h1>
+
+<p>
+    <a asp-action="registrarUsuario" asp-controller="Usuario" class="btn btn-primary btn-sm">Nuevo Usuario</a>
+</p>
+
+<div class="text-danger">
+    @TempData["mensaje"]
+</div>
+
+<div class="table-responsive">
+
+    <table class="table ">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.id_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.id_tipo_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cod_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nom_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ape_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tel_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cel_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.id_distrito)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.dir_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.dni_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.password_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.imagen_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fechareg_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fechaact_usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.estado_usuario)
+                </th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_tipo_usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cod_usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nom_usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ape_usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tel_usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cel_usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_distrito)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dir_usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dni_usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email_usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.password_usuario)
+                    </td>
+                    <td>
+                        <img src="data:image/;base64,@Convert.ToBase64String(item.imagen_usuario)" width="100px" height="100px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fechareg_usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fechaact_usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.estado_usuario)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "editarUsuario", new { id=item.id_usuario  }, new{@class="btn btn-warning btn-sm"}) |
+                        @Html.ActionLink("Eliminar", "eliminarUsuario", new { id=item.id_usuario  }, new{@class="btn btn-danger btn-sm"})
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

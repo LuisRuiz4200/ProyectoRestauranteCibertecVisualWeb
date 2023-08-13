@@ -1,0 +1,126 @@
+﻿@model PJ_RESTAURANTE_5TO_CICLO.Models.Usuario
+
+@{
+    ViewData["Title"] = "registrarUsuario";
+}
+
+<h1>registrarUsuario</h1>
+
+<h4>Usuario</h4>
+<hr />
+
+<div class="text-danger">
+     @TempData["mensaje"]
+</div>
+
+<div class="row">
+    <div class="">
+        <form asp-action="registrarUsuario" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row g-2">
+                <div class="row row-cols-4 g-2">
+                    <div class="form-group">
+                        <label asp-for="id_usuario" class="control-label"></label>
+                        <input asp-for="id_usuario" class="form-control" />
+                        <span asp-validation-for="id_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="fechareg_usuario" class="control-label"></label>
+                        <input asp-for="fechareg_usuario" class="form-control" />
+                        <span asp-validation-for="fechareg_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="fechaact_usuario" class="control-label"></label>
+                        <input asp-for="fechaact_usuario" class="form-control" />
+                        <span asp-validation-for="fechaact_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="estado_usuario" class="control-label"></label>
+                        <input asp-for="estado_usuario" class="form-control" />
+                        <span asp-validation-for="estado_usuario" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row row-cols-2 g-2">
+
+                    <div class="form-group">
+                        <label asp-for="id_tipo_usuario" class="control-label"></label>
+                        <select asp-for="id_tipo_usuario" asp-items=ViewBag.listaTipoUsuario class="form-select"></select>
+                        <span asp-validation-for="id_tipo_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="cod_usuario" class="control-label"></label>
+                        <input asp-for="cod_usuario" class="form-control" />
+                        <span asp-validation-for="cod_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="nom_usuario" class="control-label"></label>
+                        <input asp-for="nom_usuario" class="form-control" />
+                        <span asp-validation-for="nom_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ape_usuario" class="control-label"></label>
+                        <input asp-for="ape_usuario" class="form-control" />
+                        <span asp-validation-for="ape_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="tel_usuario" class="control-label"></label>
+                        <input asp-for="tel_usuario" class="form-control" />
+                        <span asp-validation-for="tel_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="cel_usuario" class="control-label"></label>
+                        <input asp-for="cel_usuario" class="form-control" />
+                        <span asp-validation-for="cel_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="id_distrito" class="control-label"></label>
+                        <select asp-for="id_distrito" asp-items=ViewBag.listaDistrito class="form-select"></select>
+                        <span asp-validation-for="id_distrito" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="dir_usuario" class="control-label"></label>
+                        <input asp-for="dir_usuario" class="form-control" />
+                        <span asp-validation-for="dir_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="dni_usuario" class="control-label"></label>
+                        <input asp-for="dni_usuario" class="form-control" />
+                        <span asp-validation-for="dni_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="email_usuario" class="control-label"></label>
+                        <input asp-for="email_usuario" class="form-control" />
+                        <span asp-validation-for="email_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="password_usuario" class="control-label"></label>
+                        <input asp-for="password_usuario" class="form-control" />
+                        <span asp-validation-for="password_usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="imagen_usuario" class="control-label"></label>
+                        <input asp-for="imagen_usuario" name="imagen" class="form-control" type="file" />
+                        <span asp-validation-for="imagen_usuario" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+
+                </div>
+            </div>
+
+            
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
