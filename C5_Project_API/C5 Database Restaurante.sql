@@ -155,6 +155,7 @@ create table tb_tarjeta(
 	nombre_tarjeta varchar(100) not null,
     fechareg_tarjeta datetime not null,
     estado_tarjeta varchar(100) not null,
+
     foreign key (id_usuario) references tb_usuario (id_usuario)
 )
 go
